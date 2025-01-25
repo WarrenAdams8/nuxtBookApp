@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@nuxt/ui": "next",
+    "@vueuse/core": "^12.5.0",
+    "@vueuse/nuxt": "12.5.0",
     "nuxt": "^3.15.3",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "zod": "^3.24.1"
   }
 }

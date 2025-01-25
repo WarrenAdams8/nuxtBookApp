@@ -4,7 +4,7 @@
 @theme {
     --font-sans: 'Geist', sans-serif;
   }
-  
+
   :root {
     --ui-radius: var(--radius-sm);
   }
