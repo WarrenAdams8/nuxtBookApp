@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import type { BooksApiResponse } from '~~/shared/types/BookTypes';
-
-
 const value = ref("");
 const valueDebounced = refDebounced(value, 1000);
 

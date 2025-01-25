@@ -1,6 +1,3 @@
-import type { Book } from "~~/shared/types/BookTypes"
-import { bookSchema } from "~~/shared/types/BookTypes"
-
 const defaultBook: Book = {
     kind: "empty",
     id: "0",

@@ -6,6 +6,21 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   compatibilityDate: "2025-01-25",
-  modules: ['@nuxt/ui','@vueuse/nuxt'],
-  css: ['~/assets/css/main.css']
+  modules: ['@nuxt/ui', '@vueuse/nuxt'],
+  css: ['~/assets/css/main.css'],
+
+  imports: {
+    dirs: [
+      '../shared/types',
+      '../shared/utils'
+    ]
+  },
+  nitro: {
+    imports: {
+      dirs: [
+        '../shared/types',
+        '../shared/utils'
+      ]
+    }
+  }
 })

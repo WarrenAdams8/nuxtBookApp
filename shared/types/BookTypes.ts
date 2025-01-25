@@ -1,6 +1,4 @@
 import { z } from "zod";
-import cleanDescription from "../utils/cleanDescription";
-
 const IndustryIdentifier = z.object({
   type: z.string(),
   identifier: z.string(),

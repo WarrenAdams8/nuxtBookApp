@@ -1,6 +1,3 @@
-import type { BooksApiResponse, Book } from "~~/shared/types/BookTypes"
-import { booksApiResponseSchema } from "~~/shared/types/BookTypes"
-
 export const useValidatedBooks = (data: BooksApiResponse): BooksApiResponse => {
     const validatedBooks = booksApiResponseSchema.safeParse(data)
     if (!validatedBooks.success) {

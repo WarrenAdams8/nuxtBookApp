@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Book } from "~~/shared/types/BookTypes";
 const { id } = useRoute().params
 
 const {
