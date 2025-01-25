@@ -6,7 +6,12 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   compatibilityDate: "2025-01-25",
-  modules: ['@nuxt/ui', '@vueuse/nuxt', 'nuxt-auth-utils'],
+  modules: [
+    '@nuxt/ui',
+    '@vueuse/nuxt',
+    'nuxt-auth-utils',
+    '@nuxthub/core'
+  ],
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     oauth: {
