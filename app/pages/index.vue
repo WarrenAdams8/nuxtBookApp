@@ -5,7 +5,7 @@ const valueDebounced = refDebounced(value, 1000);
 const { loggedIn, user, clear } = useUserSession();
 
 const {
-    data: bookResponse,
+    data: books,
     refresh,
     status,
 } = useLazyFetch(
@@ -46,17 +46,17 @@ const signOut = async () => {
         </div>
         <div v-else-if="
             status === 'error' ||
-            bookResponse?.totalItems === 0 ||
+            books?.length === 0 ||
             valueDebounced === ''
         ">
             <h2>No books found</h2>
         </div>
         <div v-else-if="status === 'success'">
             <div class="grid grid-flow-col grid-rows-4 gap-2">
-                <div v-for="book in bookResponse?.items" :key="book.id">
+                <div v-for="book in books" :key="book.id">
                     <NuxtLink :to="{ name: 'bookDetails-id', params: { id: book.id } }">
-                        <h1>{{ book.volumeInfo.title }}</h1>
-                        <img :src="book.volumeInfo.imageLinks.thumbnail" alt="book cover" />
+                        <h1>{{ book.title }}</h1>
+                        <img :src="book.thumbnail" alt="book cover" />
                     </NuxtLink>
                 </div>
             </div>

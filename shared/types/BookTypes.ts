@@ -153,7 +153,21 @@ export const booksApiResponseSchema = z
     items: [],
   });
 
-export type Book = z.infer<typeof bookSchema>;
+export type Book = {
+  title: string;
+  id: string;
+  authors: string[];
+  description: string;
+  releaseDate: string;
+  categories: string[];
+  price: number;
+  image: string;
+  thumbnail: string;
+  previewLink: string;
+  pageCount: number;
+}
+
+export type Rawbook = z.infer<typeof bookSchema>;
 
 export type BooksApiResponse = z.infer<typeof booksApiResponseSchema>;
 
