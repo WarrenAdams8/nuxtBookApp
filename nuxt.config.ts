@@ -13,6 +13,9 @@ export default defineNuxtConfig({
     '@nuxthub/core'
   ],
   css: ['~/assets/css/main.css'],
+  hub: {
+    database: true
+  },
   runtimeConfig: {
     oauth: {
       // provider in lowercase (github, google, etc.)

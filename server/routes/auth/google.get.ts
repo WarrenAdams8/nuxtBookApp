@@ -2,7 +2,6 @@ import { avatar } from "#build/ui";
 
 export default defineOAuthGoogleEventHandler({
   async onSuccess(event, { user, tokens }) {
-    console.log(user);
     await setUserSession(event, {
       user: {
         id: user.sub,

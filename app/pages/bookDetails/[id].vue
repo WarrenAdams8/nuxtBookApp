@@ -3,6 +3,9 @@ import type { Rawbook } from '~~/shared/types/BookTypes';
 
 const { id } = useRoute().params
 
+const { user } = useUserSession();
+
+
 const {
     data: book,
     status,
@@ -14,6 +17,16 @@ const {
     },
 );
 
+const addBookToFavourites = () => {
+    $fetch('/api/favourites', {
+        method: 'POST',
+        body: {
+            user: user.value,
+            book: JSON.stringify(book.value)
+        }
+    })
+}
+
 </script>
 <template>
     <div>
@@ -23,6 +36,10 @@ const {
         <div v-else-if="status === 'success'" class="p-10">
             <h1>{{ book?.title }}</h1>
             <img :src="book?.image" alt="">
+        </div>
+        <div>
+            <UButton v-if="user" label="Add to Favourites" @click="addBookToFavourites" variant="outline"
+                color="neutral" class="px-12 py-4 m-5" />
         </div>
     </div>
 </template>
