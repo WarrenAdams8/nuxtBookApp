@@ -6,7 +6,12 @@ export default eventHandler(async (event) => {
 
     const { user, book } = body
 
-    console.log(book)
+    const favourite = await useDrizzle().insert(tables.favourites).values({
+        userId: user.id,
+        book: book
+    }).returning().get()
+
+    console.log(favourite)
 
 
     return { body }
