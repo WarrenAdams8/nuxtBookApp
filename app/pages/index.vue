@@ -29,7 +29,7 @@ const signOut = async () => {
 </script>
 <template>
     <div class="p-10">
-        <UInput v-model="value" placeholder="Search..." />
+        <UInput v-model="value" placeholder="Search..." variant="soft" />
         <div v-if="!loggedIn" class="m-3 hello">
             <UButton to="/auth/github" icon="i-simple-icons-github" label="Login with GitHub" color="neutral" size="md"
                 class="m-3" external />
