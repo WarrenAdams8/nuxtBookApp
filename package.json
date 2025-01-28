@@ -17,6 +17,7 @@
     "@vueuse/core": "^12.5.0",
     "@vueuse/nuxt": "12.5.0",
     "drizzle-orm": "^0.39.0",
+    "h3-zod": "^0.5.3",
     "nuxt": "^3.15.3",
     "nuxt-auth-utils": "0.5.9",
     "vue": "latest",

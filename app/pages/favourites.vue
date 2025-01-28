@@ -1,10 +1,15 @@
 <script setup lang="ts">
 const { user } = useUserSession();
 
-const { data: books } = await useFetch('/api/favourites', {
+const { data: books, refresh } = await useFetch('/api/favourites', {
     method: 'GET',
     immediate: true
 })
+
+const deleteFavourite = async (id: string) => {
+    await $fetch(`/api/favourites/${id}`, { method: 'DELETE' })
+    refresh()
+}
 
 
 </script>
@@ -16,8 +21,8 @@ const { data: books } = await useFetch('/api/favourites', {
                 <h1>{{ book.title }}</h1>
                 <img :src="book.thumbnail" alt="book cover" />
             </NuxtLink>
-            <UButton v-if="user" label="remove from favourites" variant="outline" color="neutral" class="px-6 py-2 mt-2" />
-
+            <UButton v-if="user" label="remove from favourites" variant="outline" color="neutral" class="px-6 py-2 mt-2"
+                @click="deleteFavourite(book.id)" />
         </div>
     </div>
 </template>
