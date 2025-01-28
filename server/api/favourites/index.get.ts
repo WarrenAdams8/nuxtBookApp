@@ -6,6 +6,8 @@ export default eventHandler(async (event) => {
     // List favourites for the current user
     const favourites = await useDrizzle().select().from(tables.favourites).where(eq(tables.favourites.userId, user.id)).all()
 
-    return favourites
+    return favourites.map((row) => {
+        return row.book
+    })
 
 })

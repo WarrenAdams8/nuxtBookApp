@@ -1,8 +1,30 @@
+import { eq } from 'drizzle-orm'
+
 export default defineOAuthGitHubEventHandler({
   config: {
     emailRequired: true,
   },
-  async onSuccess(event, { user, tokens }) {
+  async onSuccess(event, { user }) {
+
+    //check if a user is already in database
+    const userFromTable = await useDrizzle().select()
+      .from(tables.users)
+      .where(eq(tables.users.userId, user.id)).all()
+
+    //insert into database
+    if (userFromTable.length === 0) {
+      const userInserted = await useDrizzle().insert(tables.users).values({
+        userId: user.id,
+        email: user.email,
+        avatar: user.avatar_url
+      }).returning().get()
+
+      console.log(userInserted)
+    } else {
+      console.log('user already in database')
+    }
+
+
     await setUserSession(event, {
       user: {
         id: user.id,

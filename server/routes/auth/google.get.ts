@@ -1,7 +1,26 @@
-import { avatar } from "#build/ui";
+import { eq } from 'drizzle-orm'
 
 export default defineOAuthGoogleEventHandler({
-  async onSuccess(event, { user, tokens }) {
+  async onSuccess(event, { user }) {
+
+    //check if a user is already in database
+    const userFromTable = await useDrizzle().select()
+      .from(tables.users)
+      .where(eq(tables.users.userId, user.sub)).all()
+
+    //insert into database
+    if (userFromTable.length === 0) {
+      const userInserted = await useDrizzle().insert(tables.users).values({
+        userId: user.sub,
+        email: user.email,
+        avatar: user.picture
+      }).returning().get()
+
+      console.log(userInserted)
+    }
+
+
+
     await setUserSession(event, {
       user: {
         id: user.sub,

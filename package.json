@@ -13,9 +13,10 @@
   "dependencies": {
     "@nuxt/ui": "next",
     "@nuxthub/core": "0.8.14",
+    "@paralleldrive/cuid2": "^2.2.2",
     "@vueuse/core": "^12.5.0",
     "@vueuse/nuxt": "12.5.0",
-    "drizzle-orm": "^0.38.4",
+    "drizzle-orm": "^0.39.0",
     "nuxt": "^3.15.3",
     "nuxt-auth-utils": "0.5.9",
     "vue": "latest",
