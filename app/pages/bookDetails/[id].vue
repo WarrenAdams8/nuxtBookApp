@@ -21,8 +21,7 @@ const addBookToFavourites = () => {
     $fetch('/api/favourites', {
         method: 'POST',
         body: {
-            user: user.value,
-            book: JSON.stringify(book.value)
+            book: book.value
         }
     })
 }

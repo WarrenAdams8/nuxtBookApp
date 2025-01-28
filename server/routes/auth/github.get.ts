@@ -1,5 +1,7 @@
 import { eq } from 'drizzle-orm'
 
+//TODO: Add proper error handling
+
 export default defineOAuthGitHubEventHandler({
   config: {
     emailRequired: true,
@@ -20,8 +22,6 @@ export default defineOAuthGitHubEventHandler({
       }).returning().get()
 
       console.log(userInserted)
-    } else {
-      console.log('user already in database')
     }
 
 
