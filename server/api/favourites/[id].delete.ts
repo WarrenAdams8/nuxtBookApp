@@ -14,7 +14,6 @@ export default eventHandler(async (event) => {
         eq(tables.favourites.userId, user.id)
     )).returning().get()
 
-    console.log(deletedFavourite)
 
     return id
 
