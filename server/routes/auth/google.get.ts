@@ -1,7 +1,13 @@
 import { eq } from 'drizzle-orm'
+import useSetCustomerId from '~~/server/utils/useSetCustomerId';
+
 
 export default defineOAuthGoogleEventHandler({
   async onSuccess(event, { user }) {
+
+    const stripeCustomerId = await useSetCustomerId(user.sub, user.email)
+
+    console.log(stripeCustomerId)
 
     //check if a user is already in database
     const userFromTable = await useDrizzle().select()

@@ -14,7 +14,8 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/css/main.css'],
   hub: {
-    database: true
+    database: true,
+    kv: true
   },
   runtimeConfig: {
     oauth: {
@@ -28,6 +29,11 @@ export default defineNuxtConfig({
         clientSecret: "",
       },
     },
+    stripe: {
+      publishableKey: "",
+      secretKey: "",
+      webhookSecretKey: ""
+    }
   },
   imports: {
     dirs: [

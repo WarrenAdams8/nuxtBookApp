@@ -1,4 +1,5 @@
 import { eq } from 'drizzle-orm'
+import useSetCustomerId from '~~/server/utils/useSetCustomerId';
 
 //TODO: Add proper error handling
 
@@ -7,6 +8,8 @@ export default defineOAuthGitHubEventHandler({
     emailRequired: true,
   },
   async onSuccess(event, { user }) {
+
+    const stripeCustomerId = await useSetCustomerId(user.id, user.email)
 
     //check if a user is already in database
     const userFromTable = await useDrizzle().select()
