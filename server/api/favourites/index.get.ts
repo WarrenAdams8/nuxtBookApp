@@ -1,13 +1,9 @@
 import { eq } from 'drizzle-orm'
 import { favourites } from '~~/server/database/schema'
-import { useStripe } from '~~/server/utils/stripe'
 
 export default eventHandler(async (event) => {
     const { user } = await requireUserSession(event)
 
-    const stripe = useStripe()
-
-    console.log(stripe)
 
     // List favourites for the current user
     const result = await useDrizzle()

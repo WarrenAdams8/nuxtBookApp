@@ -1,4 +1,20 @@
+<script setup lang="ts">
+const { loggedIn, clear } = useUserSession();
+
+</script>
 <template>
+  <div class="flex justify-center mx-auto m-3">
+    <NuxtLink to="/" class="px-3.5">Home</NuxtLink>
+    <NuxtLink to="/favourites" class="px-3.5">favourites</NuxtLink>
+    <NuxtLink to="/subscribe" class="px-3.5">subscribe</NuxtLink>
+    <div v-if="!loggedIn">
+      <NuxtLink to="/signIn" class="px-3.5">sign In</NuxtLink>
+    </div>
+    <div v-else-if="loggedIn">
+        <UButton label="Sign out" class="px-3.5" @click="clear" color="neutral" />
+    </div>
+
+  </div>
   <UApp>
     <NuxtPage />
   </UApp>

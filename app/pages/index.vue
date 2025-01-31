@@ -30,14 +30,7 @@ const signOut = async () => {
 <template>
     <div class="p-10">
         <UInput v-model="value" placeholder="Search..." variant="soft" />
-        <div v-if="!loggedIn" class="m-3 hello">
-            <UButton to="/auth/github" icon="i-simple-icons-github" label="Login with GitHub" color="neutral" size="md"
-                class="m-3" external />
-            <UButton to="/auth/google" icon="i-simple-icons-google" label="Login with Google" color="neutral" size="md"
-                class="m-3" external />
-        </div>
-        <div v-else-if="loggedIn">
-            <UButton label="Sign out" class="m-3" @click="signOut" color="neutral" />
+        <div v-if="loggedIn">
             <pre>{{ user }}</pre>
         </div>
 
