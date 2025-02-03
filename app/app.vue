@@ -1,6 +1,15 @@
 <script setup lang="ts">
 const { loggedIn, clear } = useUserSession();
 
+const { data } = await useFetch('/api/stripe/get-sub-data', {
+  immediate: true
+})
+
+alert("Make sure Stripe Listner on")
+
+console.log(data.value)
+
+
 </script>
 <template>
   <div class="flex justify-center mx-auto m-3">
@@ -11,7 +20,8 @@ const { loggedIn, clear } = useUserSession();
       <NuxtLink to="/signIn" class="px-3.5">sign In</NuxtLink>
     </div>
     <div v-else-if="loggedIn">
-        <UButton label="Sign out" class="px-3.5" @click="clear" color="neutral" />
+      <UButton label="Sign out" class="px-3.5" @click="clear" color="neutral" />
+      <h1>{{ data?.status }}</h1>
     </div>
 
   </div>
